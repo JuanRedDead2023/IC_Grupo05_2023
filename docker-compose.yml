@@ -1,0 +1,27 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./www/:/usr/share/nginx/html
+    networks:
+       - mi_red
+  mysql:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysecretpassword
+      - MYSQL_DATABASE=mydatabase
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=mypassword
+    volumes:
+      - mysql_data:/pruebas/volume/mysql
+    networks:
+       - mi_red
+networks:
+  mi_red:
+    driver: bridge
+volumes:
+  nginx_data:
+  mysql_data:

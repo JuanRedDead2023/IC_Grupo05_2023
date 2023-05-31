@@ -1,0 +1,8 @@
+services:
+   prueba: 
+     container_name: prueba
+     image: nginx
+     ports:
+       - 80:80
+     volumes:
+       - ./www/:/usr/share/nginx/html
